@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ ticker }} Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="stock-header">
+            <h1>{{ ticker }} Stock Analysis</h1>
+            <a href="/" class="back-link">← Back</a>
+        </div>
+
+        <div class="price-data">
+            <div class="price-box">
+                <span>Current Price</span>
+                <strong>${{ current_price }}</strong>
+            </div>
+            <div class="price-box">
+                <span>5-Day Forecast</span>
+                <strong>${{ forecast_price }}</strong>
+            </div>
+            <div class="trend-box trend-{{ trend|lower }}">
+                <span>Trend</span>
+                <strong>{{ trend }}</strong>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <img src="data:image/png;base64,{{ plot_url }}" alt="Stock Prediction">
+        </div>
+
+        <div class="news-section">
+            <h2>Recent News</h2>
+            {% if news %}
+            <ul class="news-list">
+                {% for item in news %}
+                <li>
+                    <a href="{{ item.link }}" target="_blank">{{ item.title }}</a>
+                    <span class="news-meta">{{ item.publisher }} • {{ item.date }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="no-news">No recent news found for {{ ticker }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
