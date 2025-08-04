@@ -8,5 +8,5 @@ Features
 
 Tech Stack
 Language: Python
-Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, yFinance (or any stock data API)
+Libraries: Pandas, NumPy, Scikit-learn, Matplotlib, yFinance
 Model: Linear Regression
